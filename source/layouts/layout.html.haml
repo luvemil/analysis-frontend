@@ -19,6 +19,11 @@
     -# Stylesheets
     = stylesheet_link_tag 'application'
   %body{class: current_page.data.body_class || 'page'}
-    = yield
+    = partial 'partials/nav'
+    .container-fluid
+      .row
+        = partial 'partials/sidebar'
+        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+          = yield
     -# Javascripts
     = javascript_include_tag 'application'
