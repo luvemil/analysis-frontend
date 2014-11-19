@@ -5,6 +5,8 @@
 #= require vendor/angularjs/restangular.min
 #= require vendor/angularjs/ui-bootstrap-tpls-0.12.0.min
 #= require vendor/d3/d3.v3.min
+#= require lib/d3.base.chart/base.chart
+#= require lib/d3.candlestick/candlestick
 #= require application
 #= require statsController
-#= require candlebarsDirective
+#= require candlestickDirective

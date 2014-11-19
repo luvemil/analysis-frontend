@@ -1,0 +1,6 @@
+[submodule "source/javascripts/lib/d3.base.chart"]
+	path = source/javascripts/lib/d3.base.chart
+	url = https://github.com/Enucatl/d3.base.chart.git
+[submodule "source/javascripts/lib/d3.candlestick"]
+	path = source/javascripts/lib/d3.candlestick
+	url = https://github.com/Enucatl/d3.candlestick.git
