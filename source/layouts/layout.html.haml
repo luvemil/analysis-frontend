@@ -18,7 +18,9 @@
 
     -# Stylesheets
     = stylesheet_link_tag 'application'
-  %body{class: current_page.data.body_class || 'page'}
+  %body{class: current_page.data.body_class || 'page',
+  "ng-app" => "AnalysisFrontendApp",
+  "ng-controller" => "statsController"}
     = partial 'partials/nav'
     .container-fluid
       .row
