@@ -1,0 +1,1 @@
+(function(){angular.module("AnalysisFrontendApp.directives",[]).directive("d3Candlestick",function(){return{restrict:"EA",scope:{data:"="},link:function(t,e){var n,a,i,d;return console.log(t.data),d=e[0].clientWidth,a=.618,i=d*a,n=new d3.chart.Candlestick,n.width(d).height(i),d3.select(e[0]).datum(t.data).call(n.draw)}}})}).call(this);
