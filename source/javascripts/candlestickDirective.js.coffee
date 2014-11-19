@@ -5,8 +5,8 @@ angular.module "AnalysisFrontendApp.directives", []
             data: "="
         }
         link: (scope, element, attrs) ->
-            console.log scope.data
-            width = element[0].clientWidth
+            #width = element[0].clientWidth
+            width = 800
             factor = 0.618
             height = width * factor
             candlestick = new d3.chart.Candlestick
@@ -14,5 +14,5 @@ angular.module "AnalysisFrontendApp.directives", []
                 .width width
                 .height height
             d3.select element[0]
-                .datum scope.data
+                .datum scope.data.candles
                 .call candlestick.draw
