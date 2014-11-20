@@ -13,6 +13,7 @@ angular.module "AnalysisFrontendApp.directives", []
             candlestick
                 .width width
                 .height height
+                .x_scale d3.time.scale()
             d3.select element[0]
                 .datum scope.data.candles
                 .call candlestick.draw
