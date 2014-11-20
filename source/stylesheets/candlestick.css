@@ -1,0 +1,11 @@
+rect.candlestick-rect {
+    fill: red;
+}
+rect.candlestick-up {
+    fill: green;
+}
+line.stem {
+    fill: none;
+    stroke: black;
+    stroke-width: 2px;
+}
