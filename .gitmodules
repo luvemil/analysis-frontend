@@ -4,3 +4,9 @@
 [submodule "source/javascripts/lib/d3.candlestick"]
 	path = source/javascripts/lib/d3.candlestick
 	url = https://github.com/Enucatl/d3.candlestick.git
+[submodule "source/javascripts/lib/d3.line"]
+	path = source/javascripts/lib/d3.line
+	url = https://github.com/Enucatl/d3.line.git
+[submodule "source/javascripts/lib/d3.axes"]
+	path = source/javascripts/lib/d3.axes
+	url = https://github.com/Enucatl/d3.axes.git
