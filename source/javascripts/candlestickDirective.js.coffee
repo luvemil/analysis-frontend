@@ -33,7 +33,6 @@ angular.module "AnalysisFrontendApp.directives", []
                 .x_scale candlestick.x_scale()
                 .y_scale candlestick.y_scale()
             scope.$watch "candles", (data) ->
-                console.log "candles", data
                 unless data?
                     return
                 d3.select element[0]
@@ -45,7 +44,8 @@ angular.module "AnalysisFrontendApp.directives", []
                     .datum 1
                     .call axes.draw
             scope.$watchGroup ["ema5", "ema10"], (data) ->
-                unless data?
+                # wait for both datasets to come
+                unless data[0]? and data[1]?
                     return
                 emas = [{
                     name: "ema5"
@@ -54,12 +54,8 @@ angular.module "AnalysisFrontendApp.directives", []
                     name: "ema10"
                     values: data[1]
                 }]
-                console.log emas
-                console.log "ema range", ema.x_scale().range()
-                console.log "ema domain", ema.x_scale().domain()
                 ema.x_scale().domain(d3.extent(data[0], ema.x_value()))
                 ema.y_scale().domain(d3.extent(data[0], ema.y_value()))
                 d3.select element[0]
                     .datum emas
                     .call ema.draw
-                console.log ema.color_scale().domain()
