@@ -7,8 +7,8 @@ angular.module "AnalysisFrontendApp.directives", []
             ema10: "="
         }
         link: (scope, element, attrs) ->
-            #width = element[0].clientWidth
-            width = 800
+            width = element.parent()[0].offsetWidth
+            console.log "width", width
             factor = 0.618
             height = width * factor
             candlestick = new d3.chart.Candlestick()
