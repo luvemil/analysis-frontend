@@ -18,7 +18,7 @@ angular.module "AnalysisFrontendApp.controllers", []
             $http.get "http://localhost:1337/api/instrument/adr?name=EUR_USD&count=40"
                 .success (res) ->
                     $scope.adr = [{name: "adr", values: res}]
-            $http.get "localhost:1337/api/instrument/stoch?name=EUR_USD&count=20"
+            $http.get "localhost:1337/api/instrument/stoch?name=EUR_USD&count=40"
                 .success (res) ->
                     $scope.stoch = [{name: "stoch", values: res}]
     ]

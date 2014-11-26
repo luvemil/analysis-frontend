@@ -8,8 +8,20 @@ body_class: index
 
   .row
     .col-md-6
+      %h2 candles with exponential moving averages 5 and 10
       %d3-candlestick{candles: "candles", ema5: "ema5", ema10: "ema10"}
 
   .row
     .col-md-6
-      %d3-line-threshold{line: "adr", threshold: "[100]"}
+      %h2 average daily range
+      %d3-line-threshold{line: "adr", threshold: "[100]", min: 0, max: 200}
+
+  .row
+    .col-md-6
+      %h2 stochastic oscillator
+      %d3-line-threshold{line: "stoch", threshold: "[20, 80]", min: 0, max: 100}
+
+  .row
+    .col-md-6
+      %h2 relative strength index
+      %d3-line-threshold{line: "rsi", threshold: "[30, 50, 70]", min: 0, max: 100}

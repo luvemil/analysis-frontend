@@ -29,7 +29,7 @@ angular.module "AnalysisFrontendApp.directives"
                 line.x_scale()
                     .domain d3.extent data[0].values, line.x_value()
                 line.y_scale()
-                    .domain [0, 200]
+                    .domain [attrs.min, attrs.max]
                 d3.select element[0]
                     .datum data
                     .call line.draw
