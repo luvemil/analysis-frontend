@@ -1,4 +1,4 @@
-angular.module "AnalysisFrontendApp.directives", []
+angular.module "AnalysisFrontendApp.directives"
     .directive "d3LineThreshold", ->
         restrict: "EA"
         scope: {
@@ -25,7 +25,6 @@ angular.module "AnalysisFrontendApp.directives", []
                 .x_scale line.x_scale()
                 .y_scale line.y_scale()
             scope.$watch "line", (data) ->
-                console.log "data changed", data
                 return unless data?
                 line.x_scale()
                     .domain d3.extent data[0].values, line.x_value()
