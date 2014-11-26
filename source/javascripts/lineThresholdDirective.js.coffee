@@ -6,7 +6,6 @@ angular.module "AnalysisFrontendApp.directives", []
             threshold: "="
         }
         link: (scope, element, attrs) ->
-            console.log "got data", scope.line, scope.threshold
             width = element.parent()[0].offsetWidth
             factor = 0.618
             height = width * factor

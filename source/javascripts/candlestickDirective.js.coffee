@@ -8,7 +8,6 @@ angular.module "AnalysisFrontendApp.directives", []
         }
         link: (scope, element, attrs) ->
             width = element.parent()[0].offsetWidth
-            console.log "width", width
             factor = 0.618
             height = width * factor
             candlestick = new d3.chart.Candlestick()
@@ -33,8 +32,14 @@ angular.module "AnalysisFrontendApp.directives", []
                 .x_scale candlestick.x_scale()
                 .y_scale candlestick.y_scale()
             scope.$watch "candles", (data) ->
-                unless data?
-                    return
+                return unless data?
+                candlestick.x_scale()
+                    .domain d3.extent data, candlestick.time_value()
+                candlestick.y_scale()
+                    .domain [
+                        d3.min data, candlestick.low_value()
+                        d3.max data, candlestick.high_value()
+                    ]
                 d3.select element[0]
                     .datum data
                     .call candlestick.draw
@@ -45,8 +50,7 @@ angular.module "AnalysisFrontendApp.directives", []
                     .call axes.draw
             scope.$watchGroup ["ema5", "ema10"], (data) ->
                 # wait for both datasets to come
-                unless data[0]? and data[1]?
-                    return
+                return unless data[0]? and data[1]?
                 emas = [{
                     name: "ema5"
                     values: data[0]
