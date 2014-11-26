@@ -14,11 +14,11 @@ angular.module "AnalysisFrontendApp.controllers", []
                     $scope.ema10 = res
             $http.get "http://localhost:1337/api/instrument/rsi?name=EUR_USD&count=40"
                 .success (res) ->
-                    $scope.rsi = res
+                    $scope.rsi = [{name: "rsi", values: res}]
             $http.get "http://localhost:1337/api/instrument/adr?name=EUR_USD&count=40"
                 .success (res) ->
-                    $scope.adr = res
+                    $scope.adr = [{name: "adr", values: res}]
             $http.get "localhost:1337/api/instrument/stoch?name=EUR_USD&count=20"
                 .success (res) ->
-                    $scope.stoch = res
+                    $scope.stoch = [{name: "stoch", values: res}]
     ]
