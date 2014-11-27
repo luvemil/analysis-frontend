@@ -46,6 +46,9 @@
 #     "Helping"
 #   end
 # end
+require 'lib/rails_proxy.rb'
+ 
+use Rack::RailsProxy
 
 # Use LiveReload
 activate :livereload
