@@ -5,7 +5,6 @@ angular.module "AnalysisFrontendApp.controllers", []
         ($scope, $http) ->
             $http.get "/api/instrument/rawdata?name=EUR_USD&granularity=M5&count=40"
                 .success (res) ->
-                    console.log "candles", res.candles
                     $scope.candles = res.candles
             $http.get "/api/instrument/ema5?name=EUR_USD&count=40"
                 .success (res) ->
