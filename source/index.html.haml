@@ -5,7 +5,16 @@ body_class: index
 
 .welcome
   %h1 Summary
+  %p
+    ADR: {{signals.adr.value}}
+  %p
+    RSI: {{signals.rsi.value}}
+  %p
+    stoch: {{signals.stoch.value}}
+  %p
+    ema5 ema10: {{signals.ema5ema10.value}}
 
+  %h1 Plots
   .row
     .col-md-6
       %h2 candles with exponential moving averages 5 and 10

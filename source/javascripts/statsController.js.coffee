@@ -3,6 +3,7 @@ angular.module "AnalysisFrontendApp.controllers", []
         "$scope"
         "$http"
         ($scope, $http) ->
+            $scope.signals = {}
             $http.get "/api/instrument/rawdata?name=EUR_USD&granularity=M5&count=40"
                 .success (res) ->
                     $scope.candles = res.candles
@@ -21,4 +22,16 @@ angular.module "AnalysisFrontendApp.controllers", []
             $http.get "/api/instrument/stoch?name=EUR_USD&count=40"
                 .success (res) ->
                     $scope.stoch = res
+            $http.get "/api/signal/adr?name=EUR_USD"
+                .success (res) ->
+                    $scope.signals.adr = res
+            $http.get "/api/signal/ema5ema10?name=EUR_USD"
+                .success (res) ->
+                    $scope.signals.ema5ema10 = res
+            $http.get "/api/signal/rsi?name=EUR_USD"
+                .success (res) ->
+                    $scope.signals.rsi = res
+            $http.get "/api/signal/stoch?name=EUR_USD"
+                .success (res) ->
+                    $scope.signals.stoch = res
     ]
