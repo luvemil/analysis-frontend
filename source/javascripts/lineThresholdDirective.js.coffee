@@ -39,6 +39,16 @@ angular.module "AnalysisFrontendApp.directives"
                     .datum 1
                     .call axes.draw
 
+                # rotate x axis tick labels
+                #
+                d3.select element[0]
+                    .select "svg"
+                    .select "g"
+                    .select "g.x.axis"
+                    .selectAll "text"
+                    .style "text-anchor", "end"
+                    .attr "transform", "rotate(-65)"
+
                 g = d3.select element[0]
                     .select "svg"
                     .select "g"

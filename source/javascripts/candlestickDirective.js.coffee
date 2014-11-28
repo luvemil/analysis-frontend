@@ -48,6 +48,16 @@ angular.module "AnalysisFrontendApp.directives", []
                     .select "g"
                     .datum 1
                     .call axes.draw
+
+                # rotate x axis tick labels
+                d3.select element[0]
+                    .select "svg"
+                    .select "g"
+                    .select "g.x.axis"
+                    .selectAll "text"
+                    .style "text-anchor", "end"
+                    .attr "transform", "rotate(-65)"
+
             scope.$watchGroup ["ema5", "ema10"], (data) ->
                 # wait for both datasets to come
                 return unless data[0]? and data[1]?
