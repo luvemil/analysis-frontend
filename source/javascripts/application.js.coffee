@@ -10,7 +10,7 @@ app.config [
     ($routeProvider, $locationProvider) ->
         $routeProvider
             .when '/welcome', {templateUrl: 'views/welcome.html', controller: 'welcomeController'} 
-            #.when '/login', {templateUrl: 'views/auth.html', controller: 'authController'} 
+            .when '/login', {templateUrl: 'views/login.html', controller: 'authController'} 
             .when '/plots', {templateUrl: 'views/plots.html', controller: 'statsController'} 
 
         $locationProvider.html5Mode false

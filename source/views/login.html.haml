@@ -1,0 +1,10 @@
+.row
+  .col-sm-6.col-md-5
+    %h2 Log in
+    %form{"ng-submit" => "submit()", "class" => "form-horizontal"}
+      .form-group
+        %input{"ng-model" => "user.email", type: "text", name: "email", placeholder: "email", class: "form-control"}
+      .form-group
+        %input{"ng-model" => "user.password", type: "password", name: "password", placeholder: "password", autocomplete: "off", class: "form-control"}
+      .form-group
+        %input{type: "submit", value: "Log in", class: "btn btn-primary btn-block"}

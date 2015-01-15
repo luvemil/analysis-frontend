@@ -3,7 +3,6 @@ angular.module "AnalysisFrontendApp.controllers", []
         "$scope"
         "$http"
         ($scope, $http) ->
-            console.log "RUNNING STATSCONTROLLER"
             $scope.signals = {}
             $http.get "/api/instrument/rawdata?name=EUR_USD&granularity=M5&count=40"
                 .success (res) ->

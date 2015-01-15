@@ -8,6 +8,7 @@
 #= require application
 #= require statsController
 #= require welcomeController
+#= require authController
 #= require candlestickDirective
 #= require lineThresholdDirective
 #= require lib/d3.base.chart/base.chart
