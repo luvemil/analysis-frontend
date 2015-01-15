@@ -7,6 +7,7 @@
 #= require vendor/d3/d3.v3.min
 #= require application
 #= require statsController
+#= require welcomeController
 #= require candlestickDirective
 #= require lineThresholdDirective
 #= require lib/d3.base.chart/base.chart
