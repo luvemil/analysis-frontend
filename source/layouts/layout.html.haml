@@ -26,7 +26,7 @@
       .row
         = partial 'partials/sidebar'
         .col-xs-9.col-xs-offset-3.col-md-10.col-md-offset-2.main
-          = yield
-          %ng-view
+          .welcome
+            %ng-view
     -# Javascripts
     = javascript_include_tag 'all'
