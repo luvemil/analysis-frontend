@@ -16,7 +16,7 @@ app.config [
             .when '/plots', {templateUrl: 'views/plots.html', controller: 'statsController'} 
 
         $locationProvider.html5Mode false
-        $httpProvider.interceptors.push 'authInterceptor' 
+        $httpProvider.interceptors.push 'authInterceptorFactory' 
 ]
 
 
