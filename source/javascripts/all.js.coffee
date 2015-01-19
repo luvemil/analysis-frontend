@@ -10,6 +10,7 @@
 #= require statsController
 #= require welcomeController
 #= require authControllers
+#= require navController
 #= require candlestickDirective
 #= require lineThresholdDirective
 #= require authInterceptorFactory

@@ -1,24 +1,24 @@
-%nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"} .container-fluid
-    .navbar-header
-      %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{:href => "#"} Project name
-    #navbar.navbar-collapse.collapse
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{:href => "#plots"} Plots
-        %li
-          %a{:href => "#welcome"} Welcome
-        %li
-          %a{:href => "#login", "ng-hide" => "isLoggedIn()"} Login
-        %li
-          %a{:href => "#signup", "ng-hide" => "isLoggedIn()"} Signup
-        %li
-          %a{:href => "#logout", "ng-show" => "isLoggedIn()"} Logout
-        %li
-          %a{:href => "#"} Help
-      %form.navbar-form.navbar-right
-        %input.form-control{:placeholder => "Search...", :type => "text"}/
+%nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation", "ng-controller" => "navController"}
+  .navbar-header
+    %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    %a.navbar-brand{:href => "#"} Project name
+  #navbar.navbar-collapse.collapse
+    %ul.nav.navbar-nav.navbar-right
+      %li{"ng-class"="{active: isActive('/plots')}"}
+        %a{:href => "#plots"} Plots
+      %li{"ng-class"="{active: isActive('/welcome')}"}
+        %a{:href => "#welcome"} Welcome
+      %li{"ng-class"="{active: isActive('/login')}"}
+        %a{:href => "#login", "ng-hide" => "isLoggedIn()"} Login
+      %li{"ng-class"="{active: isActive('/signup')}"}
+        %a{:href => "#signup", "ng-hide" => "isLoggedIn()"} Signup
+      %li
+        %a{:href => "#", "ng-show" => "isLoggedIn()", "ng-click" => "logout()"} Logout
+      %li{"ng-class"="{active: isActive('/help')}"}
+        %a{:href => "#"} Help
+    %form.navbar-form.navbar-right
+      %input.form-control{:placeholder => "Search...", :type => "text"}/

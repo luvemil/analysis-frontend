@@ -9,9 +9,7 @@ app.config [
     "$routeProvider"
     "$locationProvider"
     "$httpProvider"
-    "$rootScope"
-    "$window"
-    ($routeProvider, $locationProvider, $httpProvider, $rootScope, $window) ->
+    ($routeProvider, $locationProvider, $httpProvider) ->
         $routeProvider
             .when '/welcome', {templateUrl: 'views/welcome.html', controller: 'welcomeController'} 
             .when '/login', {templateUrl: 'views/login.html', controller: 'sessionsController'} 
@@ -20,6 +18,4 @@ app.config [
 
         $locationProvider.html5Mode false
         $httpProvider.interceptors.push 'authInterceptorFactory' 
-        $rootScope.isLoggedIn = ->
-            $window.sessionStorage.token?
 ]
