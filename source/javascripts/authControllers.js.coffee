@@ -12,6 +12,7 @@ angular.module "AnalysisFrontendApp.controllers"
                 $http
                     .post "/api/auth/login", $scope.user
                     .success (data, status, headers, config) ->
+                        console.log data
                         $window.sessionStorage.token = data.token
                         $location.path "/plots"
                     .error (data, status, headers, config) ->
@@ -30,6 +31,7 @@ angular.module "AnalysisFrontendApp.controllers"
                 $http
                     .post "/api/user/create", $scope.user
                     .success (data, status, headers, config) ->
+                        console.log data
                         $window.sessionStorage.token = data.token
                         $location.path "/plots"
                     .error (data, status, headers, config) ->

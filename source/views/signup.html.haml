@@ -7,16 +7,14 @@
       .form-group
         %input{"ng-model" => "user.password", type: "password", name: "password", placeholder: "password", autocomplete: "off", class: "form-control"}
       .form-group
-        %input{
-          "ng-model" => "user.password_confirmation",
-          type: "password",
-          name: "password_confirmation",
-          placeholder: "confirm password",
-          autocomplete: "off",
-          class: "form-control",
-          match: "user.password"
-          }
+        %input{"ng-model" => "user.password_confirmation",
+            type: "password",
+            name: "password_confirmation",
+            placeholder: "confirm password",
+            autocomplete: "off",
+            class: "form-control",
+            match: "user.password"}
       .alert.alert-danger{role: "alert", "ng-show" => "signup.password_confirmation.$error.match"}
         The two passwords do not match!
       .form-group
-        %input{type: "submit", value: "Log in", class: "btn btn-primary btn-block"}
+        %input{type: "submit", value: "Sign up", class: "btn btn-primary btn-block"}

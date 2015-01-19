@@ -7,7 +7,7 @@ angular.module "AnalysisFrontendApp.factories", []
             request: (config) ->
                 config.headers or= {}
                 if $window.sessionStorage.token?
-                    config.headers.Authorization = "Bearer #{$window.sessionStorage.token}"
+                    config.headers.access_token = $window.sessionStorage.token
                 return config
             response: (response) ->
                 if response.status is 401
