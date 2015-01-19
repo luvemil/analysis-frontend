@@ -9,7 +9,7 @@
   #navbar.navbar-collapse.collapse
     %ul.nav.navbar-nav.navbar-right
       %li{"ng-class" => "{active: isActive('/plots')}"}
-        %a{:href => "#plots"} Plots
+        %a{:href => "#plots", "ng-show" => "isLoggedIn()", "ng-click" => "logout()"} Plots
       %li{"ng-class" => "{active: isActive('/welcome')}"}
         %a{:href => "#welcome"} Welcome
       %li{"ng-class" => "{active: isActive('/login')}"}
