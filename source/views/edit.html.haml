@@ -1,7 +1,7 @@
 .row
   .col-sm-6.col-md-5
-    %h2 Sign up
-    %form{"ng-submit" => "new()", "class" => "form-horizontal", "name" => "signup"}
+    %h2 Edit profile
+    %form{"ng-submit" => "edit()", "class" => "form-horizontal", "name" => "edit"}
       .form-group
         %input{"ng-model" => "user.email", type: "text", name: "email", placeholder: "email", class: "form-control"}
       .form-group
@@ -14,7 +14,7 @@
             autocomplete: "off",
             class: "form-control",
             match: "user.password"}
-      .alert.alert-danger{role: "alert", "ng-show" => "signup.password_confirmation.$error.match"}
+      .alert.alert-danger{role: "alert", "ng-show" => "edit.password_confirmation.$error.match"}
         The two passwords do not match!
       .form-group
         %input{"ng-model" => "user.oanda_token",
@@ -34,4 +34,4 @@
           %option practice
           %option trade
       .form-group
-        %input{type: "submit", value: "Sign up", class: "btn btn-primary btn-block"}
+        %input{type: "submit", value: "Save", class: "btn btn-primary btn-block"}
