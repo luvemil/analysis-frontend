@@ -1,0 +1,22 @@
+.row
+  .col-sm-6.col-md-5
+    %h2 Sign up
+    %form{"ng-submit" => "new()", "class" => "form-horizontal", "name" => "signup"}
+      .form-group
+        %input{"ng-model" => "user.email", type: "text", name: "email", placeholder: "email", class: "form-control"}
+      .form-group
+        %input{"ng-model" => "user.password", type: "password", name: "password", placeholder: "password", autocomplete: "off", class: "form-control"}
+      .form-group
+        %input{
+          "ng-model" => "user.password_confirmation",
+          type: "password",
+          name: "password_confirmation",
+          placeholder: "confirm password",
+          autocomplete: "off",
+          class: "form-control",
+          match: "user.password"
+          }
+      .alert.alert-danger{role: "alert", "ng-show" => "signup.password_confirmation.$error.match"}
+        The two passwords do not match!
+      .form-group
+        %input{type: "submit", value: "Log in", class: "btn btn-primary btn-block"}
