@@ -8,3 +8,6 @@
         %input{"ng-model" => "user.password", type: "password", name: "password", placeholder: "password", autocomplete: "off", class: "form-control"}
       .form-group
         %input{type: "submit", value: "Log in", class: "btn btn-primary btn-block"}
+      .form-group
+        .alert.alert-danger{role: "alert", "ng-show" => "showerror"}
+          Wrong username or password!

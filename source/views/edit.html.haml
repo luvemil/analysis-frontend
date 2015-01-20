@@ -1,9 +1,9 @@
 .row
   .col-sm-6.col-md-5
     %h2 Edit profile
-    %form{"ng-submit" => "edit()", "class" => "form-horizontal", "name" => "edit"}
+    %form{"ng-submit" => "edit()", "class" => "form-horizontal", "name" => "editform"}
       .form-group
-        %input{"ng-model" => "user.email", type: "text", name: "email", placeholder: "email", class: "form-control"}
+        %input{"ng-model" => "user.email", type: "text", name: "email", value: "user.email", class: "form-control"}
       .form-group
         %input{"ng-model" => "user.password", type: "password", name: "password", placeholder: "password", autocomplete: "off", class: "form-control"}
       .form-group
@@ -14,8 +14,9 @@
             autocomplete: "off",
             class: "form-control",
             match: "user.password"}
-      .alert.alert-danger{role: "alert", "ng-show" => "edit.password_confirmation.$error.match"}
-        The two passwords do not match!
+      .form-group
+        .alert.alert-danger{role: "alert", "ng-show" => "editform.password_confirmation.$error.match"}
+          The two passwords do not match!
       .form-group
         %input{"ng-model" => "user.oanda_token",
             type: "text",
@@ -30,8 +31,12 @@
             class: "form-control",
             placeholder: "oanda account type",
             }
-          %option sandbox
-          %option practice
-          %option trade
+          %option{value: "", disabled: true} oanda account type
+          %option{selected: "user.account_type == 'sandbox'"} sandbox
+          %option{selected: "user.account_type == 'practice'"} practice
+          %option{selected: "user.account_type == 'trade'"} trade
       .form-group
         %input{type: "submit", value: "Save", class: "btn btn-primary btn-block"}
+      .form-group
+        .alert.alert-success{role: "success", "ng-show" => "showsuccess"}
+          Profile updated successfully!

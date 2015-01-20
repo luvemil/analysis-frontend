@@ -1,5 +1,6 @@
 app = angular.module "AnalysisFrontendApp", [
     "ngRoute"
+    "validation.match"
     "AnalysisFrontendApp.directives"
     "AnalysisFrontendApp.controllers"
     "AnalysisFrontendApp.factories"

@@ -14,8 +14,9 @@
             autocomplete: "off",
             class: "form-control",
             match: "user.password"}
-      .alert.alert-danger{role: "alert", "ng-show" => "signup.password_confirmation.$error.match"}
-        The two passwords do not match!
+      .form-group
+        .alert.alert-danger{role: "alert", "ng-show" => "signup.password_confirmation.$error.match"}
+          The two passwords do not match!
       .form-group
         %input{"ng-model" => "user.oanda_token",
             type: "text",
@@ -30,6 +31,7 @@
             class: "form-control",
             placeholder: "oanda account type",
             }
+          %option{value: "", disabled: true, selected: true} oanda account type
           %option sandbox
           %option practice
           %option trade
