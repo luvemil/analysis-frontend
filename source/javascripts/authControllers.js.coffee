@@ -46,12 +46,11 @@ angular.module "AnalysisFrontendApp.controllers"
                     .error (data, status, headers, config) ->
                         delete $window.sessionStorage.token
             $scope.edit = ->
-                console.log "EDITING"
                 $http
                     .put "/api/user/update", $scope.user
                     .success (data, status, headers, config) ->
                         $scope.showsuccess = true
-                        console.log "PUT GOT DATA", data
                     .error (data, status, headers, config) ->
-                        console.warn "PUT GOT ERROR", data
+                        if status is 403
+                            delete $window.sessionStorage.token
     ]
