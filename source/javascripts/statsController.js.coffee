@@ -78,4 +78,11 @@ angular.module "AnalysisFrontendApp.controllers", []
                     .error (data, status) ->
                         if status is 403
                             $location.path "/login"
+                    .success (data, status) ->
+                        a = document.createElement('a')
+                        a.href = 'data:attachment/json;charset=utf-8,' + encodeURI(data)
+                        a.target = '_blank'
+                        a.download = 'filename.json'
+                        document.body.appendChild(a)
+                        a.click()
     ]
