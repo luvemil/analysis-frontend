@@ -1,0 +1,18 @@
+.row
+  .col-sm-6.col-md-5
+    %h2 Require Historical Data
+    %form{"ng-submit" => "historical_data()", "class" => "form-horizontal", "name" => "historical"}
+      .form-group
+        %select{"ng-model" => "instrument", type: "button", name: "Instrument", placeholder: "Instrument", class: "form-control"}
+          %option{value: "", disabled: true, selected: true} Instrument
+          %option EUR_USD
+          %option EUR_GBP
+      .form-group
+        %select{"ng-model" => "granularity", type: "button", name: "Granularity", placeholder: "Granularity", class: "form-control"}
+          %option{value: "", disabled: true, selected: true} Granularity
+          %option M1
+          %option M5
+          %option M30
+          %option D
+      .form-group
+        %input{type: "submit", value: "Download", class: "btn btn-primary btn-block"}

@@ -66,3 +66,16 @@ angular.module "AnalysisFrontendApp.controllers", []
                     if status is 403
                         $location.path "/login"
     ]
+    .controller "historicalController", [
+        "$scope"
+        "$http"
+        "$location"
+        ($scope, $http, $window, $location) ->
+            $scope.historical_data = ->
+                console.log $scope.instrument
+                console.log $scope.granularity
+                $http.get "/api/instrument/historical?name=#{$scope.instrument}&granularity=#{$scope.granularity}&start=2014-06-19T15%3A47%3A40Z&end=2014-06-19T15%3A47%3A50Z"
+                    .error (data, status) ->
+                        if status is 403
+                            $location.path "/login"
+    ]

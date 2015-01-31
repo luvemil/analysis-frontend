@@ -16,6 +16,7 @@ app.config [
             .when '/login', {templateUrl: 'views/login.html', controller: 'sessionsController'} 
             .when '/signup', {templateUrl: 'views/signup.html', controller: 'registrationsController'} 
             .when '/plots', {templateUrl: 'views/plots.html', controller: 'statsController'} 
+            .when '/historical', {templateUrl: 'views/historical.html', controller: 'historicalController'}
 
         $locationProvider.html5Mode false
         $httpProvider.interceptors.push 'authInterceptorFactory' 
