@@ -71,10 +71,12 @@ angular.module "AnalysisFrontendApp.controllers", []
         "$http"
         "$location"
         ($scope, $http, $window, $location) ->
+            $('input[name="daterange"]').daterangepicker({timePicker: true}, (start, end, label) ->
+                $scope.start = start.toISOString()
+                $scope.end = end.toISOString()
+            )
             $scope.historical_data = ->
-                console.log $scope.instrument
-                console.log $scope.granularity
-                $http.get "/api/instrument/historical?name=#{$scope.instrument}&granularity=#{$scope.granularity}&start=2014-06-19T15%3A47%3A40Z&end=2014-06-19T15%3A47%3A50Z"
+                $http.get "/api/instrument/historical?name=#{$scope.instrument}&granularity=#{$scope.granularity}&start=#{$scope.start}&end=#{$scope.end}"
                     .error (data, status) ->
                         if status is 403
                             $location.path "/login"

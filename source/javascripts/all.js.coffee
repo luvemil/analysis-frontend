@@ -6,6 +6,9 @@
 #= require vendor/angularjs/ui-bootstrap-tpls-0.12.0.min
 #= require vendor/angularjs/angular-input-match.min
 #= require vendor/d3/d3.v3.min
+#= require vendor/jquery-2.1.3
+#= require vendor/bootstrap-daterangepicker/moment.min
+#= require vendor/bootstrap-daterangepicker/daterangepicker
 #= require application
 #= require statsController
 #= require welcomeController
