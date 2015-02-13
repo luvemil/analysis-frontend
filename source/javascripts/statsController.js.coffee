@@ -55,7 +55,6 @@ angular.module "AnalysisFrontendApp.controllers", []
                                 $location.path "/login"
                     $http.post "/api/signal/rsi", $scope.candles
                         .success (res) ->
-                            console.log "RSI signal", res
                             $scope.signals.rsi = res
                         .error (data, status) ->
                             if status is 403
