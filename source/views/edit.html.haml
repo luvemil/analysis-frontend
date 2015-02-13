@@ -25,6 +25,13 @@
             class: "form-control",
             }
       .form-group
+        %input{"ng-model" => "user.account_id",
+            type: "text",
+            name: "account_id",
+            placeholder: "oanda account id",
+            class: "form-control",
+            }
+      .form-group
         %select{"ng-model" => "user.account_type",
             type: "button",
             name: "account_type",

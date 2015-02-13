@@ -3,9 +3,27 @@ angular.module "AnalysisFrontendApp.controllers", []
         "$scope"
         "$http"
         "$location"
-        ($scope, $http, $location) ->
+        "$routeParams"
+        ($scope, $http, $location, $routeParams) ->
             $scope.signals = {}
-            $http.get "/api/instrument/rawdata?name=EUR_USD&granularity=M5&count=40"
+            $http.get "/api/instrument/rawdata?name=#{$routeParams.instrument}&granularity=D&count=40"
+                .error (data, status) ->
+                    if status is 403
+                        $location.path "/login"
+                .success (res) ->
+                    $http.post "/api/instrument/adr", res
+                        .success (adr) ->
+                            $scope.adr = [{name: "adr", values: adr}]
+                        .error (data, status) ->
+                            if status is 403
+                                $location.path "/login"
+                    $http.post "/api/signal/adr", res
+                        .success (res) ->
+                            $scope.signals.adr = res
+                        .error (data, status) ->
+                            if status is 403
+                                $location.path "/login"
+            $http.get "/api/instrument/rawdata?name=#{$routeParams.instrument}&granularity=M5&count=40"
                 .error (data, status) ->
                     if status is 403
                         $location.path "/login"
@@ -29,21 +47,9 @@ angular.module "AnalysisFrontendApp.controllers", []
                         .error (data, status) ->
                             if status is 403
                                 $location.path "/login"
-                    $http.post "/api/instrument/adr", $scope.candles
-                        .success (res) ->
-                            $scope.adr = [{name: "adr", values: res}]
-                        .error (data, status) ->
-                            if status is 403
-                                $location.path "/login"
                     $http.post "/api/instrument/stoch", $scope.candles
                         .success (res) ->
                             $scope.stoch = res
-                        .error (data, status) ->
-                            if status is 403
-                                $location.path "/login"
-                    $http.post "/api/signal/adr", $scope.candles
-                        .success (res) ->
-                            $scope.signals.adr = res
                         .error (data, status) ->
                             if status is 403
                                 $location.path "/login"

@@ -8,8 +8,6 @@
     %a.navbar-brand{:href => "#"} Project name
   #navbar.navbar-collapse.collapse
     %ul.nav.navbar-nav.navbar-right
-      %li{"ng-class" => "{active: isActive('/plots')}"}
-        %a{:href => "#plots", "ng-show" => "isLoggedIn()"} Plots
       %li{"ng-class" => "{active: isActive('/profile')}"}
         %a{:href => "#profile", "ng-show" => "isLoggedIn()"} Profile
       %li{"ng-class" => "{active: isActive('/login')}"}

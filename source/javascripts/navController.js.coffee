@@ -13,9 +13,4 @@ angular.module "AnalysisFrontendApp.controllers"
                 viewLocation is $location.path()
             $scope.isLoggedIn = ->
                 $window.sessionStorage.token?
-            if $window.sessionStorage.token?
-                $http.get "/api/account/index"
-                    .success (data, status, headers, config) ->
-                        $scope.accounts = data
-                        console.log "accounts", $scope.accounts
     ]
