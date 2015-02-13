@@ -41,30 +41,31 @@ angular.module "AnalysisFrontendApp.controllers", []
                         .error (data, status) ->
                             if status is 403
                                 $location.path "/login"
-            #$http.get "/api/signal/adr?name=EUR_USD"
-                #.success (res) ->
-                    #$scope.signals.adr = res
-                #.error (data, status) ->
-                    #if status is 403
-                        #$location.path "/login"
-            #$http.get "/api/signal/ema5ema10?name=EUR_USD"
-                #.success (res) ->
-                    #$scope.signals.ema5ema10 = res
-                #.error (data, status) ->
-                    #if status is 403
-                        #$location.path "/login"
-            #$http.get "/api/signal/rsi?name=EUR_USD"
-                #.success (res) ->
-                    #$scope.signals.rsi = res
-                #.error (data, status) ->
-                    #if status is 403
-                        #$location.path "/login"
-            #$http.get "/api/signal/stoch?name=EUR_USD"
-                #.success (res) ->
-                    #$scope.signals.stoch = res
-                #.error (data, status) ->
-                    #if status is 403
-                        #$location.path "/login"
+                    $http.post "/api/signal/adr", $scope.candles
+                        .success (res) ->
+                            $scope.signals.adr = res
+                        .error (data, status) ->
+                            if status is 403
+                                $location.path "/login"
+                    $http.post "/api/signal/ema5ema10", $scope.candles
+                        .success (res) ->
+                            $scope.signals.ema5ema10 = res
+                        .error (data, status) ->
+                            if status is 403
+                                $location.path "/login"
+                    $http.post "/api/signal/rsi", $scope.candles
+                        .success (res) ->
+                            console.log "RSI signal", res
+                            $scope.signals.rsi = res
+                        .error (data, status) ->
+                            if status is 403
+                                $location.path "/login"
+                    $http.post "/api/signal/stoch", $scope.candles
+                        .success (res) ->
+                            $scope.signals.stoch = res
+                        .error (data, status) ->
+                            if status is 403
+                                $location.path "/login"
     ]
     .controller "historicalController", [
         "$scope"
