@@ -98,7 +98,7 @@ angular.module "AnalysisFrontendApp.controllers", []
                         a = document.createElement('a')
                         a.href = 'data:attachment/json;charset=utf-8,' + encodeURI(data)
                         a.target = '_blank'
-                        a.download = 'filename.json'
+                        a.download = 'downloaded.oanda.history.json'
                         document.body.appendChild(a)
                         a.click()
     ]

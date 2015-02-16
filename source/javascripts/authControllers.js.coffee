@@ -14,7 +14,7 @@ angular.module "AnalysisFrontendApp.controllers"
                     .post "/api/auth/login", $scope.user
                     .success (data, status, headers, config) ->
                         $window.sessionStorage.token = data.token
-                        $location.path "/plots"
+                        $location.path "/profile"
                     .error (data, status, headers, config) ->
                         $scope.showerror = true
                         delete $window.sessionStorage.token
