@@ -28,8 +28,12 @@ angular.module "AnalysisFrontendApp.directives"
                 return unless data?
                 line.x_scale()
                     .domain d3.extent data[0].values, line.x_value()
-                line.y_scale()
-                    .domain [attrs.min, attrs.max]
+                if attrs.min? and attrs.max?
+                    line.y_scale()
+                        .domain [attrs.min, attrs.max]
+                else
+                    line.y_scale()
+                        .domain d3.extent data[0].values, line.y_value()
                 d3.select element[0]
                     .datum data
                     .call line.draw
