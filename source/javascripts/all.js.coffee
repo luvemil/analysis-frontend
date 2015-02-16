@@ -18,6 +18,7 @@
 #= require candlestickDirective
 #= require lineThresholdDirective
 #= require authInterceptorFactory
+#= require instrumentService
 #= require lib/d3.base.chart/base.chart
 #= require lib/d3.candlestick/candlestick
 #= require lib/d3.line/line

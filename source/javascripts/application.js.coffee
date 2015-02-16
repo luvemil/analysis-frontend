@@ -4,6 +4,7 @@ app = angular.module "AnalysisFrontendApp", [
     "AnalysisFrontendApp.directives"
     "AnalysisFrontendApp.controllers"
     "AnalysisFrontendApp.factories"
+    "AnalysisFrontendApp.services"
 ]
 
 app.config [

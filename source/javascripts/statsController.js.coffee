@@ -4,9 +4,17 @@ angular.module "AnalysisFrontendApp.controllers", []
         "$http"
         "$location"
         "$routeParams"
-        ($scope, $http, $location, $routeParams) ->
+        "instrumentService"
+        ($scope, $http, $location, $routeParams, instrumentService) ->
             $scope.signals = {}
-            $http.get "/api/instrument/rawdata?name=#{$routeParams.instrument}&granularity=D&count=40"
+            name = $routeParams.instrument
+            instrumentService.get()
+                .success (data, status, headers, config) ->
+                    $scope.instrument = $.grep(data, (d) -> d.instrument is name)[0]
+                .error (data, status, headers, config) ->
+                    console.warn error
+                    $location.path "/login"
+            $http.get "/api/instrument/rawdata?name=#{name}&granularity=D&count=40"
                 .error (data, status) ->
                     if status is 403
                         $location.path "/login"

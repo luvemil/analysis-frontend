@@ -4,8 +4,9 @@ angular.module "AnalysisFrontendApp.controllers"
         "$scope"
         "$window"
         "$location"
-        ($http, $scope, $window, $location) ->
-            $http.get "/api/instrument/index"
+        "instrumentService"
+        ($http, $scope, $window, $location, instrumentService) ->
+            instrumentService.get()
                 .success (data, status, headers, config) ->
                     $scope.instruments = data
                 .error (data, status, headers, config) ->
