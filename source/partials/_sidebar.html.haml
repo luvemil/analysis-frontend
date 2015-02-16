@@ -1,6 +1,5 @@
-.col-sm-3.col-md-2.sidebar
-  %ul.nav.nav-sidebar{"ng-controller" => "sidebarController"}
-    %div{"ng-repeat" => "instrument in instruments"}
-      %li{"ng-class" => "{active: isActive('/plots/{{instrument.instrument}}')}"}
-        %a{"href" => "#plots/{{instrument.instrument}}"}
-          {{instrument.displayName}}
+.col-sm-3.col-md-2.sidebar{"ng-controller" => "sidebarController"}
+  %ul.nav.nav-sidebar{"ng-repeat" => "instrument in instruments"}
+    %li{"ng-class" => "{active: isActive('/plots/{{instrument.instrument}}')}"}
+      %a{"href" => "#plots/{{instrument.instrument}}"}
+        {{instrument.displayName}}
