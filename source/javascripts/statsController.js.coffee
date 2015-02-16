@@ -9,29 +9,29 @@ angular.module "AnalysisFrontendApp.controllers", []
             $scope.signals = {}
             name = $routeParams.instrument
             instrumentService.get()
-                .success (data, status, headers, config) ->
-                    $scope.instrument = $.grep(data, (d) -> d.instrument is name)[0]
                 .error (data, status, headers, config) ->
                     console.warn error
                     $location.path "/login"
-            $http.get "/api/instrument/rawdata?name=#{name}&granularity=D&count=40"
-                .error (data, status) ->
-                    if status is 403
-                        $location.path "/login"
-                .success (res) ->
-                    $http.post "/api/instrument/adr", res
-                        .success (adr) ->
-                            $scope.adr = [{name: "adr", values: adr}]
+                .success (data, status, headers, config) ->
+                    $scope.instrument = $.grep(data, (d) -> d.instrument is name)[0]
+                    $http.get "/api/instrument/rawdata?name=#{name}&granularity=D&count=40"
                         .error (data, status) ->
                             if status is 403
                                 $location.path "/login"
-                    $http.post "/api/signal/adr", res
                         .success (res) ->
-                            $scope.signals.adr = res
-                        .error (data, status) ->
-                            if status is 403
-                                $location.path "/login"
-            $http.get "/api/instrument/rawdata?name=#{$routeParams.instrument}&granularity=M5&count=40"
+                            $http.post "/api/instrument/adr", {candles: res, pip: $scope.instrument.pip}
+                                .success (adr) ->
+                                    $scope.adr = [{name: "adr", values: adr}]
+                                .error (data, status) ->
+                                    if status is 403
+                                        $location.path "/login"
+                            $http.post "/api/signal/adr", {candles: res, pip: $scope.instrument.pip}
+                                .success (res) ->
+                                    $scope.signals.adr = res
+                                .error (data, status) ->
+                                    if status is 403
+                                        $location.path "/login"
+            $http.get "/api/instrument/rawdata?name=#{name}&granularity=M5&count=40"
                 .error (data, status) ->
                     if status is 403
                         $location.path "/login"
