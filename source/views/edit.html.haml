@@ -45,6 +45,7 @@
       .form-group
         %input{type: "submit", value: "Save", class: "btn btn-primary btn-block"}
       .form-group
+        %h3 Favorites
         %label{"ng-repeat" => "instrument in instruments"}
           %input{type: "checkbox",
             name: "selected[]",
@@ -53,6 +54,8 @@
             "ng-click" => "toggleSelection(instrument.instrument)",
             }
           {{instrument.displayName}} &nbsp;&nbsp;&nbsp;
+      .form-group
+        %input{type: "submit", value: "Save", class: "btn btn-primary btn-block"}
       .form-group
         .alert.alert-success{role: "success", "ng-show" => "showsuccess"}
           Profile updated successfully!

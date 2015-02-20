@@ -16,7 +16,6 @@
 #= require navController
 #= require sidebarController
 #= require candlestickDirective
-#= require favoritesDirective
 #= require lineThresholdDirective
 #= require authInterceptorFactory
 #= require instrumentService
