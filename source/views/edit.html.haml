@@ -45,5 +45,14 @@
       .form-group
         %input{type: "submit", value: "Save", class: "btn btn-primary btn-block"}
       .form-group
+        %label{"ng-repeat" => "instrument in instruments"}
+          %input{type: "checkbox",
+            name: "selected[]",
+            value: "{{instrument.instrument}}",
+            "ng-checked" => "selected.indexOf(instrument.instrument) > -1",
+            "ng-click" => "toggleSelection(instrument.instrument)",
+            }
+          {{instrument.displayName}} &nbsp;&nbsp;&nbsp;
+      .form-group
         .alert.alert-success{role: "success", "ng-show" => "showsuccess"}
           Profile updated successfully!

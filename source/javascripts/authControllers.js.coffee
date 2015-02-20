@@ -24,11 +24,13 @@ angular.module "AnalysisFrontendApp.controllers"
         "$http"
         "$window"
         "$location"
-        ($scope, $http, $window, $location) ->
+        "instrumentService"
+        ($scope, $http, $window, $location, instrumentService) ->
             if $window.sessionStorage.token?
                 $http.get "/api/user/findOne"
                     .success (data, status, headers, config) ->
                         $scope.user = data
+                        $scope.selected = data.favorites or []
                     .error (data, status, headers, config) ->
                         if status is 403
                             delete $window.sessionStorage.token
@@ -46,6 +48,7 @@ angular.module "AnalysisFrontendApp.controllers"
                     .error (data, status, headers, config) ->
                         delete $window.sessionStorage.token
             $scope.edit = ->
+                $scope.user.favorites = $scope.selected
                 $http
                     .put "/api/user/update", $scope.user
                     .success (data, status, headers, config) ->
@@ -53,4 +56,17 @@ angular.module "AnalysisFrontendApp.controllers"
                     .error (data, status, headers, config) ->
                         if status is 403
                             delete $window.sessionStorage.token
+            instrumentService.get()
+                .success (data, status, headers, config) ->
+                    $scope.instruments = data
+                .error (data, status, headers, config) ->
+                    if status is 403
+                        delete $window.sessionStorage.token
+
+            $scope.toggleSelection = (name) ->
+                index = $scope.selected.indexOf name
+                if index > -1
+                    $scope.selected.splice(index, 1)
+                else
+                    $scope.selected.push(name)
     ]
