@@ -4,6 +4,10 @@
     %li{"ng-class" => "{active: isActive('/plots/{{instrument.instrument}}')}"}
       %a{"href" => "#plots/{{instrument.instrument}}"}
         {{instrument.displayName}}
+  %h2 Macros
+  %ul.nav.nav-sidebar{}
+    %li{}
+      %a{"href" => "#quickview"} Prova
   %h2 All
   %ul.nav.nav-sidebar{"ng-repeat" => "instrument in instruments"}
     %li{"ng-class" => "{active: isActive('/plots/{{instrument.instrument}}')}"}
