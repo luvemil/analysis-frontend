@@ -23,3 +23,5 @@
 #= require lib/d3.candlestick/candlestick
 #= require lib/d3.line/line
 #= require lib/d3.axes/axes
+
+prova = () -> print "Hello, World!"
