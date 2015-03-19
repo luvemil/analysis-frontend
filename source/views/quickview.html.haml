@@ -1,7 +1,7 @@
 %h1 Hello, World!
 %p This is just a test  
-%p
-  :coffee
-    prova()
 
+%ul.nav.nav-sidebar{"ng-repeat" => "instrument in instruments"}
+  %li{}
+    {{instrument.displayName}}   
 
