@@ -6,6 +6,7 @@ angular.module "AnalysisFrontendApp.services"
         ($http, $window, instrumentService) ->
             dataService = {}
             getUser = () ->
+                user = ""
                 $http.get "/api/user/findOne"
                     .success (data, status, headers, config) ->
                         user = data
@@ -14,13 +15,7 @@ angular.module "AnalysisFrontendApp.services"
                             delete $window.sessionStorage.token
                 user
             dataService.fun = (arg) ->
-                if $window.sessionStorage.token?
-                    $http.get "/api/user/findOne"
-                        .success (data, status, headers, config) ->
-                            arg.user = data
-                        .error (data, status, headers, config) ->
-                            if status is 403
-                                delete $window.sessionStorage.token
+                arg.user = getUser()
                 instrumentService.get()
                     .success (data, status, headers, config) ->
                         arg.instruments = data
