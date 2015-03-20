@@ -14,13 +14,18 @@ angular.module "AnalysisFrontendApp.services"
                         if status is 403
                             delete $window.sessionStorage.token
                 user
-            dataService.fun = (arg) ->
-                arg.user = getUser()
+            getInstruments = () ->
+                instruments = {}
                 instrumentService.get()
                     .success (data, status, headers, config) ->
-                        arg.instruments = data
+                        instruments = data
                     .error (data, status, headers, config) ->
                         if status is 403
                             delete $window.sessionStorage.token
+                instruments
+
+            dataService.fun = (arg) ->
+                arg.user = getUser()
+                arg.instruments = getInstruments()
             dataService
     ]
