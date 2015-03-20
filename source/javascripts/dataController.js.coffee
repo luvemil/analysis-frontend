@@ -6,5 +6,5 @@ angular.module "AnalysisFrontendApp.controllers"
         "dataService"
         "instrumentService"
         ($scope, $http, $window, dataService, instrumentService) ->
-            dataService.fun($scope)
+            $scope = dataService.data
     ]
