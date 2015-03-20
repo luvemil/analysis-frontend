@@ -3,10 +3,9 @@ angular.module "AnalysisFrontendApp.controllers"
         "$scope"
         "$http"
         "$window"
-        "$location"
         "dataService"
         "instrumentService"
-        ($scope, $http, $window, $location, dataService, instrumentService) ->
+        ($scope, $http, $window, dataService, instrumentService) ->
             if $window.sessionStorage.token?
                 $http.get "/api/user/findOne"
                     .success (data, status, headers, config) ->
