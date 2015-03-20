@@ -1,0 +1,9 @@
+%h1 Test
+
+%p Hello
+
+-# %ul{"ng-repeat" => "robo in instruments"}
+
+%ul.nav.nav-sidebar{"ng-repeat" => "robo in instruments"}
+  %li
+    {{robo.displayName}}

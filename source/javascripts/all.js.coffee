@@ -15,10 +15,12 @@
 #= require authControllers
 #= require navController
 #= require sidebarController
+#= require dataController
 #= require candlestickDirective
 #= require lineThresholdDirective
 #= require authInterceptorFactory
 #= require instrumentService
+#= require dataService
 #= require lib/d3.base.chart/base.chart
 #= require lib/d3.candlestick/candlestick
 #= require lib/d3.line/line
