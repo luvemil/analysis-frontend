@@ -15,6 +15,7 @@
 #= require authControllers
 #= require navController
 #= require sidebarController
+#= require marcoController
 #= require candlestickDirective
 #= require lineThresholdDirective
 #= require authInterceptorFactory
