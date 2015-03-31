@@ -4,7 +4,6 @@ angular.module "AnalysisFrontendApp.controllers"
         "$http"
         "$window"
         "dataService"
-        "instrumentService"
-        ($scope, $http, $window, dataService, instrumentService) ->
+        ($scope, $http, $window, dataService) ->
             dataService.fun($scope)
     ]

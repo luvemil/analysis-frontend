@@ -5,27 +5,25 @@ angular.module "AnalysisFrontendApp.services"
         "instrumentService"
         ($http, $window, instrumentService) ->
             dataService = {}
-            getUser = () ->
-                user = ""
+            getUser = (arg) ->
                 $http.get "/api/user/findOne"
                     .success (data, status, headers, config) ->
-                        user = data
+                        arg.user = data
                     .error (data, status, headers, config) ->
                         if status is 403
                             delete $window.sessionStorage.token
-                user
-            getInstruments = () ->
-                instruments = {}
+
+            getInstruments = (arg) ->
                 instrumentService.get()
                     .success (data, status, headers, config) ->
-                        instruments = data
+                        arg.instruments = data
                     .error (data, status, headers, config) ->
                         if status is 403
                             delete $window.sessionStorage.token
-                instruments
 
             dataService.fun = (arg) ->
-                arg.user = getUser()
-                arg.instruments = getInstruments()
+                getUser arg
+                getInstruments arg
+
             dataService
     ]
