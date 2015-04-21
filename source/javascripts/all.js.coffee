@@ -2,7 +2,7 @@
 #= require vendor/angularjs/angular
 #= require vendor/angularjs/angular-route.min
 #= require vendor/angularjs/angular-sanitize.min
-#= require vendor/angularjs/restangular.min
+#= require vendor/angularjs/angular-resource.min
 #= require vendor/angularjs/ui-bootstrap-tpls-0.12.0.min
 #= require vendor/angularjs/angular-input-match.min
 #= require vendor/d3/d3.v3.min
@@ -13,12 +13,14 @@
 #= require statsController
 #= require welcomeController
 #= require authControllers
+#= require tradeAttemptsController
 #= require navController
 #= require sidebarController
 #= require candlestickDirective
 #= require lineThresholdDirective
 #= require authInterceptorFactory
 #= require instrumentService
+#= require tradeAttemptService
 #= require lib/d3.base.chart/base.chart
 #= require lib/d3.candlestick/candlestick
 #= require lib/d3.line/line

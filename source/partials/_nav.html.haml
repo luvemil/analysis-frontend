@@ -16,6 +16,8 @@
         %a{:href => "#signup", "ng-hide" => "isLoggedIn()"} Signup
       %li{"ng-class" => "{active: isActive('/historical')}"}
         %a{:href => "#historical", "ng-show" => "isLoggedIn()"} Historical
+      %li{"ng-class" => "{active: isActive('/tradeattempts')}"}
+        %a{:href => "#tradeattempts", "ng-show" => "isLoggedIn()"} Trade attempts
       %li
         %a{:href => "#", "ng-show" => "isLoggedIn()", "ng-click" => "logout()"} Logout
       %li{"ng-class" => "{active: isActive('/help')}"}
