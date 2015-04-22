@@ -12,17 +12,20 @@ angular.module "AnalysisFrontendApp.directives"
             margin = {
                 left: 0.1 * width
                 right: 0.1 * width
-                top: 0.05 * height
+                top: 0.5 * height
                 bottom: 0.05 * height
             }
 
             scope.$watch "attempts", (data) ->
                 return unless data?
-                console.log "attempts", data
 
                 x_scale = d3.time.scale()
                     .domain d3.extent data, (d) -> new Date(d.time)
                     .range [0, width]
+
+                y_scale = d3.scale.ordinal()
+                    .domain signals
+                    .rangeRoundPoints [0, height], 1
 
                 x_axis = d3.svg.axis()
                     .orient "top"
@@ -32,18 +35,12 @@ angular.module "AnalysisFrontendApp.directives"
                     .orient "left"
                     .scale y_scale
 
-                y_scale = d3.scale.ordinal()
-                    .domain signals
-                    .rangeRoundPoints [0, height]
-
                 color_scale = d3.scale.ordinal()
                     .domain ["buy", "false", "sell", true]
                     .range ["#1a9641", "#fdae61", "#d7191c", "#1a9641"]
 
                 rectheight = Math.floor(y_scale.range()[1] - y_scale.range()[0] - 1)
                 rectwidth = Math.floor(x_scale(new Date(data[1].time)) - x_scale(new Date(data[0].time))) - 1
-                console.log "rects", rectwidth, rectheight
-                console.log "svg", width, height
 
                 svg = d3.select element[0]
                     .selectAll "svg"
@@ -52,6 +49,11 @@ angular.module "AnalysisFrontendApp.directives"
                 g_enter = svg.enter()
                     .append "svg"
                     .append "g"
+
+                g_enter.append "g"
+                    .classed "x axis", true
+                g_enter.append "g"
+                    .classed "y axis", true
 
                 svg
                     .attr "width", width + margin.left + margin.right
@@ -82,10 +84,18 @@ angular.module "AnalysisFrontendApp.directives"
                     .attr "width", rectwidth
                     .attr "height", rectheight
                     .attr "x", 0
-                    .attr "y", y_scale
+                    .attr "y", (d) -> Math.floor(y_scale(d) - rectheight / 2)
                     .attr "fill", (d, i, j) ->
                         status = times[0][j].__data__[d]
                         color_scale status
+                    .attr "title", (d, i, j) ->
+                        new Date(times[0][j].__data__.time)
 
                 rects.exit().remove()
                 times.exit().remove()
+
+                g.select ".x.axis"
+                    .call x_axis
+
+                g.select ".y.axis"
+                    .call y_axis
