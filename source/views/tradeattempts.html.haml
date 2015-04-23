@@ -1,4 +1,5 @@
 .row
   .col-md-12
-    %h2 AUD/CAD
-    %d3-trade-attempts-single-instrument{attempts: "attempts"}
+    %div{"ng-repeat" => "(instrument, trades) in attempts"}
+      %h2 {{instrument}}
+      %d3-trade-attempts-single-instrument{attempts: "trades"}

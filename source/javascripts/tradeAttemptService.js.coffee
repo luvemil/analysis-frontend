@@ -5,7 +5,13 @@ angular.module "AnalysisFrontendApp.services"
             $resource "/api/tradeattempt/find", {}, {
                 "query": {
                     method: "post"
-                    isArray: true
+                    transformResponse: [
+                        angular.fromJson
+                        (data) -> data.map (d) ->
+                            d.time = new Date d.time
+                            d
+                        (data) -> _.groupBy data, "instrument"
+                    ]
                 }
             }
     ]

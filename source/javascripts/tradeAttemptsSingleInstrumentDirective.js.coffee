@@ -16,11 +16,13 @@ angular.module "AnalysisFrontendApp.directives"
                 bottom: 0.05 * height
             }
 
-            scope.$watch "attempts", (data) ->
-                return unless data?
+            scope.$watch "attempts.length", (length) ->
+                return unless length
+
+                data = scope.attempts
 
                 x_scale = d3.time.scale()
-                    .domain d3.extent data, (d) -> new Date(d.time)
+                    .domain d3.extent data, (d) -> (d.time)
                     .range [0, width]
 
                 y_scale = d3.scale.ordinal()
@@ -40,7 +42,7 @@ angular.module "AnalysisFrontendApp.directives"
                     .range ["#1a9641", "#fdae61", "#d7191c", "#1a9641"]
 
                 rectheight = Math.floor(y_scale.range()[1] - y_scale.range()[0] - 1)
-                rectwidth = Math.floor(x_scale(new Date(data[1].time)) - x_scale(new Date(data[0].time))) - 1
+                rectwidth = Math.floor(x_scale(d3.time.minute.offset(data[0].time, 5)) - x_scale(data[0].time)) - 1
 
                 svg = d3.select element[0]
                     .selectAll "svg"
@@ -69,7 +71,7 @@ angular.module "AnalysisFrontendApp.directives"
                     .enter()
                     .append "g"
                     .classed "rects", true
-                    .attr "transform", (d) -> "translate(#{x_scale(new Date(d.time))}, 0)"
+                    .attr "transform", (d) -> "translate(#{x_scale(d.time)}, 0)"
 
                 rects = g.selectAll ".rects"
                     .selectAll ".rect"
@@ -89,7 +91,10 @@ angular.module "AnalysisFrontendApp.directives"
                         status = times[0][j].__data__[d]
                         color_scale status
                     .attr "title", (d, i, j) ->
-                        new Date(times[0][j].__data__.time)
+                        times[0][j].__data__.time
+                    .attr "stroke", "gold"
+                    .attr "stroke-width", (d, i, j) ->
+                        if times[0][j].__data__.status == "false" then 0 else 1
 
                 rects.exit().remove()
                 times.exit().remove()
